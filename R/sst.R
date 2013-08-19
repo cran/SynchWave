@@ -924,7 +924,7 @@ curve_ext_multi <- function(Tx, fs, nc, lambda = 1e3, clwin = 4) {
             fb <- Cs[, ni] - cli
             fe <- Cs[, ni] + cli
             fb[fb < 1] <- 1
-            fe[fb > na] <- na
+            fe[fe > na] <- na
  
             Tx[ (0:(N-1))*na + fb ] <-  sqrt(eps)
             if ( cli > 0 )
