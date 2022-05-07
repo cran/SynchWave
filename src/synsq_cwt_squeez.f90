@@ -9,14 +9,14 @@
 !
 !    Fortran port by Dongik Jang (dongik.s.jang@gmail.com)
 
-SUBROUTINE synsq_cwt_squeeze(Wx, na, N, w, as, fs, dfs, lfm1, lfM2, out)
+SUBROUTINE synsq_cwt_squeeze(Wx, na, N, w, as, dfs, lfm1, lfM2, out)
     IMPLICIT NONE
     
     INTEGER :: ai, bi, k, N, na
     DOUBLE PRECISION :: lfM2, lfm1, eps
     DOUBLE COMPLEX :: Wx(na, N), out(na, N)
     DOUBLE PRECISION :: w(na, N), Wxr(na, N), Wxi(na, N) 
-    DOUBLE PRECISION :: as(na), fs(na), dfs(na), Txr(na, N), Txi(na, N)
+    DOUBLE PRECISION :: as(na), dfs(na), Txr(na, N), Txi(na, N)
     DOUBLE PRECISION :: dfsinv(na), asrtinv(na)
     DOUBLE PRECISION :: Wxbr(na), Wxbi(na), Txbr(na), Txbi(na), wab(na)
 
@@ -44,11 +44,11 @@ SUBROUTINE synsq_cwt_squeeze(Wx, na, N, w, as, fs, dfs, lfm1, lfM2, out)
             IF( disfinite(wab(ai)) .AND. (wab(ai) .GT. 0) ) THEN
 !                k = INT( FLOOR( 0.5d0 + (DBLE(na-1))/(lfM2 - lfm1) * (DLOG(wab(ai))/LOG(2.0) - lfm1) ) ) + 1
                 k = INT( FLOOR( 0.5d0 + (DBLE(na-1))/(lfM2 - lfm1) * (log2(wab(ai)) - lfm1) ) ) + 1
-            	IF( isfinite(k) .AND. (k .GE. 1) .AND. (k .LE. na) ) THEN
-                	Txbr(k) = Txbr(k) + (Wxbr(ai) * asrtinv(ai) * dfsinv(k))
-                	Txbi(k) = Txbi(k) + (Wxbi(ai) * asrtinv(ai) * dfsinv(k))
+                IF( isfinite(k) .AND. (k .GE. 1) .AND. (k .LE. na) ) THEN
+                    Txbr(k) = Txbr(k) + (Wxbr(ai) * asrtinv(ai) * dfsinv(k))
+                    Txbi(k) = Txbi(k) + (Wxbi(ai) * asrtinv(ai) * dfsinv(k))
                 END IF
-			END IF
+            END IF
         END DO
         
         DO ai = 1, na
@@ -96,7 +96,7 @@ END SUBROUTINE synsq_cwt_squeeze
 SUBROUTINE diff_W (W, na, N, dt, dorder, out)
     IMPLICIT NONE
     
-    INTEGER :: ai, bi, k, N, na
+    INTEGER :: ai, bi, N, na
     DOUBLE COMPLEX :: W(na, N), out(na, N)
     DOUBLE PRECISION :: dt
     INTEGER :: dorder, iedval
@@ -287,7 +287,7 @@ SUBROUTINE imdilate (A, m, n, SE, ms, ns, out)
     
     INTEGER :: m, n, ms, ns
     INTEGER :: A(m,n), SE(ms, ns), out(m,n)
-    INTEGER :: i, j, tmp(ms, ns), d1, d2, xc, yc
+    INTEGER :: i, j, tmp(ms, ns), xc, yc
     INTEGER :: jid, jed, iid, ied
     
     xc = ceiling( DBLE(ms + 1)/2.0)

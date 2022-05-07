@@ -1,6 +1,6 @@
-f49e2edd7176a92a3298fc30d75753c8 *DESCRIPTION
-0101413598695fe60c77a64be47d96d0 *NAMESPACE
-9975d41dd758de78dcd762a72265023f *R/sst.R
+c34deb4659bf9e903766d96b815fabc9 *DESCRIPTION
+02d7d5e2699765dd444e297d3c258066 *NAMESPACE
+301e2679d92d1ed66ff2f204e471851c *R/sst.R
 293d08a101e3cfde37286ff693cd7803 *man/SynchWave-internal.Rd
 f0f1fa5621ce8ee65d351b1dcfd5b296 *man/curve_ext.Rd
 44396087e131e3fdc6134aa8791e78be *man/curve_ext_multi.Rd
@@ -15,4 +15,4 @@ d3b789ab5aa3971ddc2dc2d4fd547986 *man/synsq_cwt_iw.Rd
 2bb2dab765321a19b139931e29fc18e3 *man/synsq_filter_pass.Rd
 f8c8e5f470876ebc2bcbe376ea252892 *man/wfiltfn.Rd
 105f820b936be5e4f8a39df857839056 *man/wfilth.Rd
-94f2e822e6ae0ba748f999a17d0d7da8 *src/synsq_cwt_squeez.f90
+ff0e4659f7ee6f736d71c80fc51673eb *src/synsq_cwt_squeez.f90

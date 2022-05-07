@@ -1,4 +1,7 @@
 # Export all names
 exportPattern(".")
 
+importFrom("stats", "fft", "median")
+importFrom("fields", "image.plot")
+
 useDynLib(SynchWave)

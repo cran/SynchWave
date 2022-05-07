@@ -505,7 +505,7 @@ est_riskshrink_thresh <- function (Wx, nv) {
     # in that same section.
     #
     # 1. Donoho, D.L.; I.M. Johnstone (1994), "Ideal spatial adaptation by
-    #    wavelet shrinkage," Biometrika, vol 81, pp. 425–455.
+    #   wavelet shrinkage," Biometrika, vol 81, pp. 425--455.
     #
     # Inputs:
     #  Wx: wavelet transform of a signal, see help cwt_fw
@@ -615,7 +615,7 @@ cwt_freq_direct <- function (Wx, dWx, opt) {
     #
     # This is the analytic implementation of Eq. (7) of [1].
     #
-    # 1. E. Brevdo, N.S. Fučkar, G. Thakur, and H-T. Wu, "The
+    # 1. E. Brevdo, N.S. Fuckar, G. Thakur, and H-T. Wu, "The
     # Synchrosqueezing algorithm: a robust analysis tool for signals
     # with time-varying spectrum," 2011.
     #
@@ -655,7 +655,7 @@ cwt_freq <- function (Wx, dt, opt) {
     # This is a numerical differentiation implementation of Eq. (7) of
     # [1].
     #
-    # 1. E. Brevdo, N.S. Fučkar, G. Thakur, and H-T. Wu, "The
+    # 1. E. Brevdo, N.S. Fuckar, G. Thakur, and H-T. Wu, "The
     # Synchrosqueezing algorithm: a robust analysis tool for signals
     # with time-varying spectrum," 2011.
     
@@ -765,7 +765,7 @@ synsq_cwt_squeeze <- function(Wx, w, tt, nv, opt) {
     # 1. I. Daubechies, J. Lu, H.T. Wu, "Synchrosqueezed Wavelet Transforms: a
     # tool for empirical mode decomposition", 2010.
     #
-    # 2. E. Brevdo, N.S. Fučkar, G. Thakur, and H-T. Wu, "The
+    # 2. E. Brevdo, N.S. Fuckar, G. Thakur, and H-T. Wu, "The
     # Synchrosqueezing algorithm: a robust analysis tool for signals
     # with time-varying spectrum," 2011.
     eps <- .Machine$double.eps
@@ -801,7 +801,7 @@ synsq_cwt_squeeze <- function(Wx, w, tt, nv, opt) {
         Tx <- matrix(0, nrow(Wx), ncol(Wx))
     } else {
         out <- .Fortran("synsq_cwt_squeeze",  Wx=as.complex(Wx), na=as.integer(na), N=as.integer(N), w=as.double(w),
-                        sc=as.double(asc), fs=as.double(fs), dfs=as.double(dfs),  lfm=as.double(lfm), lfM=as.double(lfM),
+                        sc=as.double(asc), dfs=as.double(dfs),  lfm=as.double(lfm), lfM=as.double(lfM),
                         out=complex(nrow(Wx)*ncol(Wx)), NAOK=TRUE)$out
         dim(out) <- dim(Wx)
         Tx <- c(1/nv) * out
@@ -837,7 +837,7 @@ synsq_adm <- function(type, opt=NULL) {
     # R_\psi in Eq. 3 of [1].  Note, here we multiply R_\psi by the
     # inverse of log(2)/nv (found in Alg. 1 of that paper).
     #
-    # 1. E. Brevdo, N.S. Fu��kar, G. Thakur, and H-T. Wu, "The
+    # 1. E. Brevdo, N.S. Fuckar, G. Thakur, and H-T. Wu, "The
     # Synchrosqueezing algorithm: a robust analysis tool for signals
     # with time-varying spectrum," 2011.
     #
